@@ -214,29 +214,34 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="approach" className="approach-section section-card">
-          <SectionHeader
-            eyebrow="Approach"
-            title="A simple path from messy IT to managed confidence"
-            align="center"
-          />
-          <div className="process-list">
-            {process.map((item, index) => (
-              <ProcessStep item={item} index={index} key={item.title} />
-            ))}
-          </div>
-        </section>
+        <div className="final-stack">
+          <section id="approach" className="approach-section">
+            <SectionHeader
+              eyebrow="Approach"
+              title="A simple path from messy IT to managed confidence"
+              align="center"
+            />
+            <div className="process-list">
+              {process.map((item, index) => (
+                <ProcessStep item={item} index={index} key={item.title} />
+              ))}
+            </div>
+          </section>
 
-        <section id="contact" className="contact-section section-card">
-          <div>
-            <SectionHeader eyebrow="Contact" title="Tell us what you need help with" />
-            <p>
-              Send through your contact details, the best time to reach you, and a
-              quick note about your IT needs. FarNorth IT will get back to you soon.
-            </p>
-          </div>
-          <ContactForm />
-        </section>
+          <section id="contact" className="contact-section">
+            <div>
+              <SectionHeader
+                eyebrow="Contact"
+                title="Tell us what you need help with"
+              />
+              <p>
+                Send through your contact details, the best time to reach you, and a
+                quick note about your IT needs. FarNorth IT will get back to you soon.
+              </p>
+            </div>
+            <ContactForm />
+          </section>
+        </div>
       </main>
 
       <footer>
