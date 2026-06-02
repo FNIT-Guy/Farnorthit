@@ -160,7 +160,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="services" className="section section-light">
+        <section id="services" className="section section-light section-card">
           <SectionHeader
             eyebrow="What We Do"
             title="IT services that keep operations moving"
@@ -187,7 +187,7 @@ export default function Home() {
           </ul>
         </section>
 
-        <section id="about" className="split-section">
+        <section id="about" className="split-section section-card">
           <div className="split-media">
             <Image
               src="/assets/images/technician-work.webp"
@@ -214,7 +214,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="approach" className="approach-section">
+        <section id="approach" className="approach-section section-card">
           <SectionHeader
             eyebrow="Approach"
             title="A simple path from messy IT to managed confidence"
@@ -227,7 +227,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="contact-section">
+        <section id="contact" className="contact-section section-card">
           <div>
             <SectionHeader eyebrow="Contact" title="Tell us what you need help with" />
             <p>
