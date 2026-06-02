@@ -17,6 +17,10 @@ export default function ContactForm() {
   async function handleSubmit(event) {
     event.preventDefault();
 
+    if (isSending) {
+      return;
+    }
+
     if (!window.emailjs || !isReady) {
       setStatus({
         type: "error",
@@ -28,22 +32,35 @@ export default function ContactForm() {
     setIsSending(true);
     setStatus(null);
 
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const templateParams = {
+      contact: formData.get("contact"),
+      name: formData.get("name"),
+      time: formData.get("time"),
+      message: formData.get("message")
+    };
+
     try {
-      await window.emailjs.sendForm(
+      const result = await window.emailjs.send(
         emailJsConfig.serviceId,
         emailJsConfig.templateId,
-        event.currentTarget
+        templateParams,
+        emailJsConfig.publicKey
       );
-      event.currentTarget.reset();
+      if (result?.status && result.status !== 200) {
+        throw result;
+      }
+      form.reset();
       setStatus({
         type: "success",
-        text: "Thank you for reaching out. We will get back to you soon."
+        text: "Thanks, your message has been sent. FarNorth IT will get back to you soon."
       });
     } catch (error) {
       console.error("EmailJS Error:", error);
       setStatus({
         type: "error",
-        text: "Sorry, there was an error sending your message. Please try again later."
+        text: "Sorry, the form could not confirm delivery. Please try again or email us directly."
       });
     } finally {
       setIsSending(false);
@@ -98,7 +115,10 @@ export default function ContactForm() {
           {isSending ? "Sending..." : "Send Message"}
         </button>
         {status ? (
-          <p className={`form-status ${status.type}`} role="status">
+          <p
+            className={`form-status ${status.type}`}
+            role={status.type === "error" ? "alert" : "status"}
+          >
             {status.text}
           </p>
         ) : null}
