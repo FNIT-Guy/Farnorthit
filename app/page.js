@@ -65,6 +65,96 @@ const outcomes = [
   "Better staff support"
 ];
 
+const contactDetails = {
+  phoneDisplay: "0434 822 076",
+  phoneSchema: "+61434822076",
+  email: "guy.corrigan@farnorthit.com.au",
+  locality: "Edmonton",
+  region: "QLD"
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://farnorthit.com.au/#business",
+      name: "FarNorth IT",
+      url: "https://farnorthit.com.au",
+      logo: "https://farnorthit.com.au/assets/images/logo.webp",
+      image: "https://farnorthit.com.au/assets/images/og-image.webp",
+      telephone: contactDetails.phoneSchema,
+      email: contactDetails.email,
+      description:
+        "Managed IT services, cybersecurity, cloud systems, and practical IT support for Cairns and Far North Queensland businesses.",
+      areaServed: [
+        {
+          "@type": "City",
+          name: "Cairns"
+        },
+        {
+          "@type": "AdministrativeArea",
+          name: "Far North Queensland"
+        },
+        {
+          "@type": "AdministrativeArea",
+          name: "Queensland"
+        }
+      ],
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: contactDetails.locality,
+        addressRegion: contactDetails.region,
+        addressCountry: "AU"
+      },
+      priceRange: "$$",
+      knowsAbout: [
+        "Managed IT services",
+        "IT support",
+        "Cybersecurity",
+        "Microsoft 365",
+        "Cloud systems",
+        "Business technology consulting"
+      ],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "FarNorth IT services",
+        itemListElement: services.map((service) => ({
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: service.title,
+            description: service.text
+          }
+        }))
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://farnorthit.com.au/#website",
+      url: "https://farnorthit.com.au",
+      name: "FarNorth IT",
+      publisher: {
+        "@id": "https://farnorthit.com.au/#business"
+      },
+      inLanguage: "en-AU"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://farnorthit.com.au/#webpage",
+      url: "https://farnorthit.com.au",
+      name: "FarNorth IT | Managed IT Services in Cairns",
+      isPartOf: {
+        "@id": "https://farnorthit.com.au/#website"
+      },
+      about: {
+        "@id": "https://farnorthit.com.au/#business"
+      },
+      inLanguage: "en-AU"
+    }
+  ]
+};
+
 function SectionHeader({ eyebrow, title, children, align = "left" }) {
   return (
     <div className={`section-heading ${align === "center" ? "center" : ""}`}>
@@ -101,6 +191,12 @@ function ProcessStep({ item, index }) {
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData)
+        }}
+      />
       <header className="site-header">
         <a className="brand" href="#home" aria-label="FarNorth IT home">
           <Image
@@ -238,6 +334,18 @@ export default function Home() {
                 Send through your contact details, the best time to reach you, and a
                 quick note about your IT needs. FarNorth IT will get back to you soon.
               </p>
+              <address className="contact-details">
+                <a href={`tel:${contactDetails.phoneSchema}`}>
+                  {contactDetails.phoneDisplay}
+                </a>
+                <a href={`mailto:${contactDetails.email}`}>
+                  {contactDetails.email}
+                </a>
+                <span>
+                  {contactDetails.locality}, {contactDetails.region} - serving
+                  Cairns and Far North Queensland
+                </span>
+              </address>
             </div>
             <ContactForm />
           </section>
@@ -245,6 +353,19 @@ export default function Home() {
       </main>
 
       <footer>
+        <p>
+          Managed IT services, cybersecurity, cloud systems, and IT consulting
+          for Cairns and Far North Queensland businesses.
+        </p>
+        <address>
+          <a href={`tel:${contactDetails.phoneSchema}`}>
+            {contactDetails.phoneDisplay}
+          </a>
+          <a href={`mailto:${contactDetails.email}`}>{contactDetails.email}</a>
+          <span>
+            {contactDetails.locality}, {contactDetails.region}
+          </span>
+        </address>
         <p>
           &copy; 2026 FarNorth IT - Professional IT Support in Cairns,
           Queensland.

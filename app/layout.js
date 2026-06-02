@@ -8,30 +8,69 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "FarNorth IT | Managed IT Services in Cairns",
+  metadataBase: new URL("https://farnorthit.com.au"),
+  title: {
+    default: "FarNorth IT | Managed IT Services in Cairns",
+    template: "%s | FarNorth IT"
+  },
   description:
-    "Expert IT support and managed services in Cairns for businesses across Far North Queensland.",
+    "Managed IT services, cybersecurity, cloud systems, and practical IT support for Cairns and Far North Queensland businesses.",
   keywords: [
     "Cairns IT support",
+    "managed IT services Cairns",
     "managed IT services Queensland",
     "IT consulting Cairns",
+    "cybersecurity Cairns",
+    "Microsoft 365 support Cairns",
     "business IT solutions",
     "24/7 IT support",
     "Far North Queensland IT"
   ],
   authors: [{ name: "FarNorth IT" }],
+  creator: "FarNorth IT",
+  publisher: "FarNorth IT",
+  alternates: {
+    canonical: "/"
+  },
   openGraph: {
-    title: "FarNorth IT | Professional IT Support in Cairns",
+    title: "FarNorth IT | Managed IT Services in Cairns",
     description:
-      "Expert IT support and managed services in Cairns for Far North Queensland businesses.",
+      "Managed IT services, cybersecurity, cloud systems, and practical IT support for Cairns and Far North Queensland businesses.",
     url: "https://farnorthit.com.au",
     siteName: "FarNorth IT",
-    type: "website"
+    locale: "en_AU",
+    type: "website",
+    images: [
+      {
+        url: "/assets/images/og-image.webp",
+        width: 1200,
+        height: 630,
+        alt: "FarNorth IT managed IT services in Cairns"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FarNorth IT | Managed IT Services in Cairns",
+    description:
+      "Managed IT services, cybersecurity, cloud systems, and practical IT support for Cairns and Far North Queensland businesses.",
+    images: ["/assets/images/og-image.webp"]
   },
   robots: {
     index: true,
-    follow: true
-  }
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1
+    }
+  },
+  icons: {
+    icon: "/assets/images/logo.webp",
+    apple: "/assets/images/logo.webp"
+  },
+  category: "technology"
 };
 
 export default function RootLayout({ children }) {
