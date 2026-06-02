@@ -25,9 +25,10 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at 18% 4%, rgba(19, 163, 199, 0.16), transparent 30rem),
-    radial-gradient(circle at 86% 24%, rgba(11, 95, 165, 0.12), transparent 28rem),
-    linear-gradient(180deg, #ffffff 0%, var(--bg) 38%, #eef5fb 100%);
+    radial-gradient(circle at 18% 4%, rgba(19, 163, 199, 0.2), transparent 30rem),
+    radial-gradient(circle at 86% 24%, rgba(11, 95, 165, 0.15), transparent 28rem),
+    radial-gradient(circle at 12% 78%, rgba(6, 42, 73, 0.1), transparent 26rem),
+    linear-gradient(180deg, #ffffff 0%, var(--bg) 36%, #eaf3fa 100%);
   color: var(--ink);
   font-family:
     var(--font-inter),
@@ -38,6 +39,36 @@ body {
     "Segoe UI",
     sans-serif;
   line-height: 1.6;
+}
+
+body::before,
+body::after {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  content: "";
+}
+
+body::before {
+  background:
+    linear-gradient(rgba(11, 95, 165, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 95, 165, 0.055) 1px, transparent 1px),
+    linear-gradient(135deg, transparent 0 48%, rgba(19, 163, 199, 0.1) 49%, transparent 51% 100%);
+  background-size:
+    58px 58px,
+    58px 58px,
+    420px 420px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.18) 72%, transparent);
+}
+
+body::after {
+  z-index: -1;
+  background:
+    radial-gradient(circle at 72% 12%, rgba(255, 255, 255, 0.9), transparent 16rem),
+    radial-gradient(circle at 24% 42%, rgba(255, 255, 255, 0.64), transparent 18rem),
+    linear-gradient(120deg, transparent 0 20%, rgba(255, 255, 255, 0.46) 20% 21%, transparent 21% 100%),
+    linear-gradient(120deg, transparent 0 68%, rgba(19, 163, 199, 0.08) 68% 69%, transparent 69% 100%);
 }
 
 img {
@@ -95,6 +126,22 @@ nav a:hover {
   gap: clamp(32px, 6vw, 82px);
   align-items: center;
   color: var(--ink);
+}
+
+.hero::before {
+  position: absolute;
+  left: max(18px, calc((100vw - 1220px) / 2));
+  right: max(18px, calc((100vw - 1220px) / 2));
+  top: 120px;
+  z-index: -1;
+  height: 420px;
+  content: "";
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 18% 38%, rgba(19, 163, 199, 0.16), transparent 16rem),
+    radial-gradient(circle at 82% 42%, rgba(11, 95, 165, 0.14), transparent 18rem),
+    rgba(255, 255, 255, 0.38);
+  filter: blur(1px);
 }
 
 .hero-content {
@@ -202,7 +249,7 @@ h3 {
   padding: 18px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.84);
 }
 
 .hero-proof strong,
@@ -300,7 +347,8 @@ h3 {
 }
 
 .section-light {
-  background: #ffffff;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 251, 255, 0.96));
   border: 1px solid rgba(216, 226, 236, 0.9);
   box-shadow: 0 18px 54px rgba(15, 38, 64, 0.08);
 }
@@ -414,8 +462,15 @@ h3 {
   padding: clamp(42px, 7vw, 70px) clamp(22px, 5vw, 58px);
   border-radius: 8px;
   background:
+    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px),
     radial-gradient(circle at 85% 15%, rgba(19, 163, 199, 0.35), transparent 22rem),
     linear-gradient(135deg, var(--deep), var(--deep-2));
+  background-size:
+    42px 42px,
+    42px 42px,
+    auto,
+    auto;
   color: #ffffff;
   box-shadow: var(--shadow);
   text-align: center;
@@ -460,6 +515,7 @@ h3 {
   border: 1px solid rgba(216, 226, 236, 0.9);
   border-radius: 8px;
   background:
+    radial-gradient(circle at 18% 22%, rgba(19, 163, 199, 0.16), transparent 20rem),
     linear-gradient(90deg, rgba(232, 244, 255, 0.72), rgba(255, 255, 255, 0.95));
 }
 
@@ -486,7 +542,15 @@ h3 {
   padding: clamp(58px, 7vw, 96px) clamp(18px, 4vw, 44px);
   border-radius: 8px;
   background:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    radial-gradient(circle at 18% 20%, rgba(19, 163, 199, 0.24), transparent 22rem),
     linear-gradient(180deg, rgba(7, 31, 54, 0.96), rgba(10, 54, 92, 0.98));
+  background-size:
+    46px 46px,
+    46px 46px,
+    auto,
+    auto;
   color: #ffffff;
   text-align: center;
 }
@@ -542,7 +606,9 @@ h3 {
   padding: clamp(44px, 7vw, 72px) clamp(18px, 4vw, 44px);
   border: 1px solid rgba(216, 226, 236, 0.9);
   border-radius: 8px;
-  background: #ffffff;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(19, 163, 199, 0.13), transparent 18rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 252, 255, 0.96));
   box-shadow: 0 18px 54px rgba(15, 38, 64, 0.08);
   text-align: center;
 }
