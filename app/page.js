@@ -199,18 +199,26 @@ export default function Home() {
       />
       <header className="site-header">
         <a className="brand" href="#home" aria-label="FarNorth IT home">
-          <Image
-            src="/assets/images/logo.webp"
-            alt="FarNorth IT"
-            width="360"
-            height="203"
-          />
+          <span className="brand-mark">
+            <Image
+              src="/assets/images/logo.webp"
+              alt=""
+              width="360"
+              height="203"
+            />
+          </span>
+          <span className="brand-text">
+            <strong>FarNorth IT</strong>
+            <small>Managed IT</small>
+          </span>
         </a>
-        <nav aria-label="Primary navigation">
+        <nav className="nav-shell" aria-label="Primary navigation">
           <a href="#services">Services</a>
           <a href="#about">About</a>
           <a href="#approach">Approach</a>
-          <a href="#contact">Contact</a>
+          <a className="nav-cta" href="#contact">
+            Contact
+          </a>
         </nav>
       </header>
 
