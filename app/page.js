@@ -4,18 +4,22 @@ import ContactForm from "../components/ContactForm";
 const services = [
   {
     title: "Local IT Consulting",
+    tag: "Advisory",
     text: "Practical advice for improving systems, reducing risk, and planning technology around how your Cairns business actually works."
   },
   {
     title: "24/7 Managed IT Services",
+    tag: "Support",
     text: "Monitoring, maintenance, user support, and fast response when the systems your team depends on need attention."
   },
   {
     title: "Cybersecurity & Compliance",
+    tag: "Security",
     text: "Layered security, backup planning, access control, and compliance-minded support for Australian business environments."
   },
   {
     title: "Cloud & Workplace Systems",
+    tag: "Cloud",
     text: "Microsoft 365, device management, email, networking, and workplace tools configured for reliability and ease of use."
   }
 ];
@@ -36,11 +40,63 @@ const strengths = [
 ];
 
 const process = [
-  "Assess the current setup",
-  "Stabilise critical systems",
-  "Improve security and backups",
-  "Support the team ongoing"
+  {
+    title: "Assess the current setup",
+    text: "Map devices, users, software, risks, backups, and pain points."
+  },
+  {
+    title: "Stabilise critical systems",
+    text: "Fix the recurring problems first so staff can work with less friction."
+  },
+  {
+    title: "Improve security and backups",
+    text: "Tighten access, recovery, updates, and day-to-day protection."
+  },
+  {
+    title: "Support the team ongoing",
+    text: "Keep systems monitored, maintained, and easier to improve over time."
+  }
 ];
+
+const outcomes = [
+  "Reduced downtime",
+  "Clearer IT roadmap",
+  "Safer access and backups",
+  "Better staff support"
+];
+
+function SectionHeader({ eyebrow, title, children, align = "left" }) {
+  return (
+    <div className={`section-heading ${align === "center" ? "center" : ""}`}>
+      <p className="eyebrow">{eyebrow}</p>
+      <h2>{title}</h2>
+      {children ? <p>{children}</p> : null}
+    </div>
+  );
+}
+
+function ServiceCard({ service }) {
+  return (
+    <article className="service-card">
+      <span className="card-tag">{service.tag}</span>
+      <h3>{service.title}</h3>
+      <p>{service.text}</p>
+      <a href="#contact" aria-label={`Ask about ${service.title}`}>
+        Discuss this service
+      </a>
+    </article>
+  );
+}
+
+function ProcessStep({ item, index }) {
+  return (
+    <article className="process-step">
+      <span>{String(index + 1).padStart(2, "0")}</span>
+      <h3>{item.title}</h3>
+      <p>{item.text}</p>
+    </article>
+  );
+}
 
 export default function Home() {
   return (
@@ -104,24 +160,31 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="services" className="section">
-          <div className="section-heading">
-            <p className="eyebrow">What We Do</p>
-            <h2>IT services that keep operations moving</h2>
-            <p>
-              From one-off advice to ongoing managed support, the focus is simple:
-              fewer surprises, safer systems, and better day-to-day technology.
-            </p>
-          </div>
+        <section id="services" className="section section-light">
+          <SectionHeader
+            eyebrow="What We Do"
+            title="IT services that keep operations moving"
+          >
+            From one-off advice to ongoing managed support, the focus is simple:
+            fewer surprises, safer systems, and better day-to-day technology.
+          </SectionHeader>
           <div className="service-grid">
             {services.map((service) => (
-              <article className="service-card" key={service.title}>
-                <span aria-hidden="true" />
-                <h3>{service.title}</h3>
-                <p>{service.text}</p>
-              </article>
+              <ServiceCard service={service} key={service.title} />
             ))}
           </div>
+        </section>
+
+        <section className="outcomes-band" aria-label="Business outcomes">
+          <div>
+            <p className="eyebrow">Outcomes</p>
+            <h2>Technology should feel steady, secure, and easier to manage.</h2>
+          </div>
+          <ul>
+            {outcomes.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         </section>
 
         <section id="about" className="split-section">
@@ -134,8 +197,10 @@ export default function Home() {
             />
           </div>
           <div className="split-copy">
-            <p className="eyebrow">About FarNorth IT</p>
-            <h2>Local experience, practical support, and calm execution.</h2>
+            <SectionHeader
+              eyebrow="About FarNorth IT"
+              title="Local experience, practical support, and calm execution."
+            />
             <p>
               FarNorth IT delivers reliable IT solutions tailored to local business
               needs. Our founder, currently serving as Systems Administrator at the
@@ -150,24 +215,21 @@ export default function Home() {
         </section>
 
         <section id="approach" className="approach-section">
-          <div className="section-heading">
-            <p className="eyebrow">Approach</p>
-            <h2>A simple path from messy IT to managed confidence</h2>
-          </div>
+          <SectionHeader
+            eyebrow="Approach"
+            title="A simple path from messy IT to managed confidence"
+            align="center"
+          />
           <div className="process-list">
             {process.map((item, index) => (
-              <article className="process-step" key={item}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <h3>{item}</h3>
-              </article>
+              <ProcessStep item={item} index={index} key={item.title} />
             ))}
           </div>
         </section>
 
         <section id="contact" className="contact-section">
           <div>
-            <p className="eyebrow">Contact</p>
-            <h2>Tell us what you need help with</h2>
+            <SectionHeader eyebrow="Contact" title="Tell us what you need help with" />
             <p>
               Send through your contact details, the best time to reach you, and a
               quick note about your IT needs. FarNorth IT will get back to you soon.
