@@ -131,9 +131,22 @@ a {
   letter-spacing: -0.03em;
 }
 
+.brand-tree-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin-left: 2px;
+  border: 1px solid rgba(129, 165, 194, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
 .brand-tree {
   width: 34px;
-  height: 34px;
+  height: auto;
   object-fit: contain;
 }
 
