@@ -9,14 +9,14 @@ export default function sitemap() {
       priority: 1
     },
     {
-      url: "https://farnorthit.com.au/reclaim/",
-      lastModified: "2026-11-02",
+      url: "https://farnorthit.com.au/tembrilo/",
+      lastModified: "2026-11-03",
       changeFrequency: "monthly",
       priority: 0.6
     },
     {
-      url: "https://farnorthit.com.au/reclaim/privacy/",
-      lastModified: "2026-11-02",
+      url: "https://farnorthit.com.au/tembrilo/privacy/",
+      lastModified: "2026-11-03",
       changeFrequency: "yearly",
       priority: 0.4
     }

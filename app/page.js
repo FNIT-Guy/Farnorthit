@@ -360,9 +360,9 @@ export default function Home() {
 
       <footer>
         <p>
-          <a href="/reclaim/">Reclaim app support</a>
+          <a href="/tembrilo/">Tembrilo app support</a>
           {" · "}
-          <a href="/reclaim/privacy/">Reclaim privacy policy</a>
+          <a href="/tembrilo/privacy/">Tembrilo privacy policy</a>
         </p>
         <p>
           Managed IT services, cybersecurity, cloud systems, and IT consulting
